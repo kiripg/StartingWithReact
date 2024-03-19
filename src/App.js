@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React, { useState, useEffect } from 'react';
+import MyButton from "./components/base/buttons/button.js";
+
+export default function MyApp() {
+
+  const [count, setCount] = useState(0);
+  const [showMessage, setShowMessage] = useState(false);
+
+  useEffect(() => {
+    if (count === 5) {
+      setShowMessage(true);
+    } else {
+      setShowMessage(false)
+    }
+  }, [count]);
+
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>Welcome</p>
+      <MyButton
+        messageWhenReached="You've reached 5!"
+        count={count}
+        handleClick={handleClick}
+        showMessage={showMessage}
+      />
     </div>
   );
 }
 
-export default App;
