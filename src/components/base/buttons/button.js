@@ -1,18 +1,20 @@
 
 import ButtonStyled from './button.styled';
+import { Link } from 'react-router-dom';
 
-
-function MyButton({ messageWhenReached, count, handleClick, showMessage }) {
-
-  
  
+
+function MyButton({count, handleClick, showButton }) {
 
 
   return (
     <><ButtonStyled.Container onClick={handleClick} className='Button'>
       <ButtonStyled.Text>You clicked {count} times</ButtonStyled.Text>
     </ButtonStyled.Container>
-    {showMessage && <p>{messageWhenReached}</p>}
+    {showButton && ( <Link to={`/Page2/${count}`}><ButtonStyled.Container>
+          <ButtonStyled.Text>Go to Page 2</ButtonStyled.Text>
+          </ButtonStyled.Container>
+        </Link>)}
     </>
      
   );

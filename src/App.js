@@ -1,36 +1,19 @@
-
-import React, { useState, useEffect } from 'react';
-import MyButton from "./components/base/buttons/button.js";
-
-export default function MyApp() {
-
-  const [count, setCount] = useState(0);
-  const [showMessage, setShowMessage] = useState(false);
-
-  useEffect(() => {
-    if (count === 5) {
-      setShowMessage(true);
-    } else {
-      setShowMessage(false)
-    }
-  }, [count]);
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import Router from "./components/routers/Router";
 
 
-  function handleClick() {
-    setCount(count + 1);
-  }
+function App() {
 
 
   return (
-    <div>
-      <p>Welcome</p>
-      <MyButton
-        messageWhenReached="You've reached 5!"
-        count={count}
-        handleClick={handleClick}
-        showMessage={showMessage}
-      />
-    </div>
-  );
+
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+
+  )
+
 }
 
+export default App;
